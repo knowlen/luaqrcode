@@ -35,6 +35,8 @@ lua qrimage.lua "Test" output.ppm 12 2
 
 # Arguments: <text> [filename] [module_size] [border]
 ```
+
+![Sample QR Code Output](readme_output.png)
 ### Supported Output Formats
 
 - **PPM** - Generated natively by Lua (no dependencies)
