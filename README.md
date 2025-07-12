@@ -206,7 +206,6 @@ This is a fork of the original [luaqrcode](https://github.com/speedata/luaqrcode
 **This Fork Adds:**
 - Native image output functionality (PPM/PNG/JPEG)
 - Command-line interface for image generation
-- Pure Lua implementation with no Python dependencies
 - Modern testing framework with 295 comprehensive assertions
 - Professional CI-ready test infrastructure
 
