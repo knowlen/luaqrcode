@@ -43,7 +43,7 @@ for _, size in ipairs({6, 12, 20}) do
         module_size = size,
         border = 2
     })
-    
+
     if success then
         print(string.format("✓ Size %d: %s", size, message))
     else
