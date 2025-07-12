@@ -5,8 +5,7 @@ include_files = {
   ".luacheckrc"
 }
 exclude_files = {
-  ".luarocks",
-  "locco/*"
+  ".luarocks"
 }
 globals = {
   "testing",
