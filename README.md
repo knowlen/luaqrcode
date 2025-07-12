@@ -8,3 +8,6 @@ Maintenance status: maintained (bug fixes)<br>
 
 Part of the [speedata Publisher](https://www.speedata.de/).
 
+
+Nick Knowles:
+    the main script is matrix_to_image.py
