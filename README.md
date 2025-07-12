@@ -162,12 +162,6 @@ make clean          # Remove compiled files
 | **LuaJIT** | 0.14s | 0.16s | **6.6x faster** |
 | **Bytecode** | ~0.35s | ~1.08s | Faster loading only |
 
-### Performance Recommendations
-- **Development**: Use standard Lua for maximum compatibility
-- **Production**: Use LuaJIT for 6.6x performance improvement
-- **Distribution**: Compile to bytecode for faster loading
-
-
 
 ## Development
 
@@ -194,16 +188,6 @@ git commit -m "Your commit message"
 git push origin feature-name
 
 # Create a Pull Request on GitHub
-```
-
-**For project maintainers:**
-```bash
-# Clone directly and create branches
-git clone https://github.com/knowlen/luaqrcode.git
-cd luaqrcode
-git checkout -b feature-name
-# ... make changes and test ...
-lua tests/run_all.lua
 ```
 
 ## Credits
