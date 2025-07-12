@@ -92,11 +92,11 @@ end
 | `tests/test_image.lua` | Complete image generation tests |
 | `tests/run_all.lua` | Test runner for all suites |
 
-### Legacy Tests
+### Legacy Tests (Reference Only)
 | File | Purpose |
 |------|---------|
-| `qrtest.lua` | Original core library tests |
-| `test_qrimage.lua` | Original image generation tests |
+| `tests/legacy/qrtest.lua` | Original core library tests |
+| `tests/legacy/test_qrimage.lua` | Original image generation tests |
 
 ## Testing
 
@@ -110,13 +110,13 @@ lua -e '_G.test_framework = dofile("tests/framework.lua"); dofile("tests/test_co
 lua -e '_G.test_framework = dofile("tests/framework.lua"); dofile("tests/test_image.lua"); _G.test_framework.run()'
 ```
 
-### Legacy Tests (still available)
+### Legacy Tests (Reference Only)
 ```bash
-# Original core tests
-lua qrtest.lua
+# Original core tests (moved to legacy folder)
+lua tests/legacy/qrtest.lua
 
-# Original image tests  
-lua -e 'dofile("test_qrimage.lua")'
+# Original image tests (moved to legacy folder)
+lua -e 'dofile("tests/legacy/test_qrimage.lua")'
 ```
 
 ### Test Features

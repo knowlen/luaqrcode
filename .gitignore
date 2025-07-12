@@ -59,8 +59,17 @@ Desktop.ini
 *.so
 luac.out
 
-# Personal files that shouldn't be versioned
+# AI tools and configuration files
 CLAUDE.md
-combat_log_gen.py
-eso_trial_encounter.csv
-lua_qr_test.lua
+CLAUDE.local.md
+.cursor/
+.cursorrules
+.github/copilot-instructions.md
+.aider*
+.codeium/
+.gemini/
+.anthropic/
+claude-*
+anthropic-*
+openai-*
+*.aider.log
