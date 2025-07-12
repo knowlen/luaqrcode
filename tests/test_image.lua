@@ -75,7 +75,7 @@ framework.suite("Matrix to Image Conversion")
         assert.is_true(ok, "Matrix generation should succeed")
 
         -- Save matrix to image
-        local success, message = qrimage.save_matrix_image(matrix, "test_matrix.ppm")
+        local success, _ = qrimage.save_matrix_image(matrix, "test_matrix.ppm")
         assert.is_true(success, "Matrix image save should succeed")
         assert.is_true(framework.file_exists("test_matrix.ppm"), "Matrix image should exist")
     end)
@@ -136,7 +136,7 @@ framework.suite("Parameter Validation")
         cleanup_test_files()
     end)
     :test("default parameters", function()
-        local success, message = qrimage.save_qr_image("DEFAULT", "test_default.ppm")
+        local success, _ = qrimage.save_qr_image("DEFAULT", "test_default.ppm")
 
         assert.is_true(success, "Default parameters should work")
         -- Default should be module_size=10, border=4
@@ -145,7 +145,7 @@ framework.suite("Parameter Validation")
         framework.delete_file("test_default.ppm")
     end)
     :test("zero module size handling", function()
-        local success, message = qrimage.save_qr_image("ZERO", "test_zero.ppm", {
+        local success, _ = qrimage.save_qr_image("ZERO", "test_zero.ppm", {
             module_size = 0
         })
 
@@ -155,7 +155,7 @@ framework.suite("Parameter Validation")
         framework.delete_file("test_zero.ppm")
     end)
     :test("negative border handling", function()
-        local success, message = qrimage.save_qr_image("NEG", "test_neg.ppm", {
+        local success, _ = qrimage.save_qr_image("NEG", "test_neg.ppm", {
             border = -1
         })
 
@@ -173,7 +173,7 @@ framework.suite("File Format Validation")
         cleanup_test_files()
     end)
     :test("PPM header validation", function()
-        local success, message = qrimage.save_qr_image("HEADER", "test_header.ppm")
+        local success, _ = qrimage.save_qr_image("HEADER", "test_header.ppm")
         assert.is_true(success, "PPM generation should succeed")
 
         local content = framework.read_file("test_header.ppm")
@@ -200,7 +200,7 @@ framework.suite("File Format Validation")
 
         for _, case in ipairs(test_cases) do
             local filename, should_succeed_unconditionally = case[1], case[2]
-            local success, message = qrimage.save_qr_image("CASE", filename)
+            local success, _ = qrimage.save_qr_image("CASE", filename)
 
             if should_succeed_unconditionally then
                 assert.is_true(success, "Extension " .. filename .. " should work")
@@ -229,7 +229,7 @@ framework.suite("Integration Tests")
 
         for i, format in ipairs(formats) do
             local filename = string.format("test_multi_%d.%s", i, format.ext)
-            local success, message = qrimage.save_qr_image(test_data, filename)
+            local success, _ = qrimage.save_qr_image(test_data, filename)
 
             if format.should_work == true then
                 assert.is_true(success, format.ext .. " should work")
@@ -245,7 +245,7 @@ framework.suite("Integration Tests")
     :test("large QR code generation", function()
         -- Generate a larger QR code with more data
         local large_data = string.rep("LARGE_DATA_TEST_", 10)  -- Repeat to make it bigger
-        local success, message = qrimage.save_qr_image(large_data, "test_large.ppm", {
+        local success, _ = qrimage.save_qr_image(large_data, "test_large.ppm", {
             module_size = 8,
             border = 6
         })

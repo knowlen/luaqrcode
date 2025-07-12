@@ -177,7 +177,7 @@ framework.suite("Integration Tests")
         end
     end)
     :test("QR generation with empty string", function()
-        local ok, result = qrcode.qrcode("")
+        local ok, _ = qrcode.qrcode("")
         -- Empty string should still generate a valid QR (it encodes to empty data)
         assert.is_true(ok, "Empty string should generate valid QR")
     end)
