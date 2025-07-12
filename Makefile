@@ -1,1 +1,0 @@
-# Documentation generation removed - will be replaced with custom docs
