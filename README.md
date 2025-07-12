@@ -31,7 +31,7 @@ lua qrimage.lua "Hello World" hello.png
 lua qrimage.lua "Hello World" output.png
 
 # Generate PPM image with custom size
-lua qrimage.lua "Test" output.ppm 12 2
+lua qrimage.lua "Hello World" output.ppm 12 2
 
 # Arguments: <text> [filename] [module_size] [border]
 ```
