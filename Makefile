@@ -1,2 +1,1 @@
-doc:
-	lua locco/locco.lua qrencode.lua
+# Documentation generation removed - will be replaced with custom docs
