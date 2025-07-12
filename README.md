@@ -35,8 +35,23 @@ lua qrimage.lua "Test" output.ppm 12 2
 
 # Arguments: <text> [filename] [module_size] [border]
 ```
+### Supported Output Formats
 
-### Lua Library Usage
+- **PPM** - Generated natively by Lua (no dependencies)
+- **PNG** - Converted from PPM using system tools
+- **JPEG** - Converted from PPM using system tools
+
+The library automatically detects available conversion tools (ImageMagick, netpbm, ffmpeg) and uses the first one found.
+
+## Error Correction Levels
+All standard QR code error correction levels are supported:
+- **L** (Low) - ~7% error correction
+- **M** (Medium) - ~15% error correction  
+- **Q** (Quartile) - ~25% error correction
+- **H** (High) - ~30% error correction
+
+
+## Library Usage
 ```lua
 -- Load the image generation module
 local qrimage = dofile("qrimage.lua")
@@ -54,7 +69,7 @@ else
 end
 ```
 
-### Core Library Only
+### Base library only
 ```lua
 -- Use just the QR generation without image output
 local qrencode = dofile("qrencode.lua")
@@ -100,7 +115,6 @@ end
 
 ## Testing
 
-### Modern Test Framework
 ```bash
 # Run all tests with modern framework
 lua tests/run_all.lua
@@ -108,18 +122,6 @@ lua tests/run_all.lua
 # Individual test suites
 lua -e '_G.test_framework = dofile("tests/framework.lua"); dofile("tests/test_core.lua"); _G.test_framework.run()'
 lua -e '_G.test_framework = dofile("tests/framework.lua"); dofile("tests/test_image.lua"); _G.test_framework.run()'
-```
-
-### Performance Testing
-```bash
-# Performance benchmarks
-make benchmark      # Compare test suite performance
-make speed-test     # Compare QR generation speed
-make test-jit       # Run tests with LuaJIT
-
-# Bytecode compilation
-make bytecode       # Compile to bytecode for faster loading
-make clean          # Remove compiled files
 ```
 
 ### Legacy Tests (Reference Only)
@@ -134,14 +136,25 @@ lua -e 'dofile("tests/legacy/test_qrimage.lua")'
 ### Test Features
 - **295 comprehensive assertions** covering all functionality
 - **23 test suites** with logical organization
-- **Colored output** with progress indicators and emoji status
 - **Rich assertion library** with clear error messages
 - **100% test coverage** for both core and image functionality
 - **CI-ready** with proper exit codes
 
 ## Performance
-
 This library supports multiple Lua implementations with significant performance differences:
+
+### Performance Testing
+```bash
+# Performance benchmarks
+make benchmark      # Compare test suite performance
+make speed-test     # Compare QR generation speed
+make test-jit       # Run tests with LuaJIT
+
+# Bytecode compilation
+make bytecode       # Compile to bytecode for faster loading
+make clean          # Remove compiled files
+```
+
 
 | Implementation | Test Suite | QR Generation (100 codes) | Improvement |
 |---------------|------------|---------------------------|-------------|
@@ -154,21 +167,44 @@ This library supports multiple Lua implementations with significant performance 
 - **Production**: Use LuaJIT for 6.6x performance improvement
 - **Distribution**: Compile to bytecode for faster loading
 
-## Supported Output Formats
 
-- **PPM** - Generated natively by Lua (no dependencies)
-- **PNG** - Converted from PPM using system tools
-- **JPEG** - Converted from PPM using system tools
 
-The library automatically detects available conversion tools (ImageMagick, netpbm, ffmpeg) and uses the first one found.
+## Development
 
-## Error Correction Levels
+### Contributing
+This fork maintains compatibility with the original library while adding modern capabilities.
 
-All standard QR code error correction levels are supported:
-- **L** (Low) - ~7% error correction
-- **M** (Medium) - ~15% error correction  
-- **Q** (Quartile) - ~25% error correction
-- **H** (High) - ~30% error correction
+**For external contributors:**
+```bash
+# Fork the repository on GitHub, then:
+git clone https://github.com/YOUR_USERNAME/luaqrcode.git
+cd luaqrcode
+git remote add upstream https://github.com/knowlen/luaqrcode.git
+
+# Create a feature branch
+git checkout -b feature-name
+
+# Make changes and test
+# ... your modifications ...
+lua tests/run_all.lua  # Ensure all tests pass
+
+# Commit and push to your fork
+git add .
+git commit -m "Your commit message"
+git push origin feature-name
+
+# Create a Pull Request on GitHub
+```
+
+**For project maintainers:**
+```bash
+# Clone directly and create branches
+git clone https://github.com/knowlen/luaqrcode.git
+cd luaqrcode
+git checkout -b feature-name
+# ... make changes and test ...
+lua tests/run_all.lua
+```
 
 ## Credits
 
@@ -192,30 +228,4 @@ This is a fork of the original [luaqrcode](https://github.com/speedata/luaqrcode
 Copyright (c) 2012-2020, Patrick Gundlach (SPEEDATA GMBH) and contributors  
 See [License.md](License.md) for full license text.
 
-## Development
 
-### Contributing
-This fork maintains compatibility with the original library while adding modern capabilities:
-
-```bash
-# Clone and test
-git clone https://github.com/knowlen/luaqrcode.git
-cd luaqrcode
-lua tests/run_all.lua
-
-# Make changes and test
-# ... your modifications ...
-lua tests/run_all.lua  # Ensure all tests pass
-```
-
-### Code Quality
-- **100% test coverage** - All functionality thoroughly tested
-- **Modern test framework** - Rich assertions and clear reporting
-- **CI integration** - GitHub Actions with multiple Lua versions
-- **Clean codebase** - No external dependencies, pure Lua implementation
-
-### Architecture
-The core QR generation algorithm remains unchanged from the original implementation, ensuring compatibility and reliability. New features are built as separate modules that integrate cleanly with the existing codebase.
-
-**Maintenance Status:** Active development (this fork)  
-**Original Status:** Maintained for bug fixes only
