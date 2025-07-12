@@ -1,5 +1,9 @@
 # Lua QR Code Generator
 
+[![Test](https://github.com/knowlen/luaqrcode/actions/workflows/test.yml/badge.svg)](https://github.com/knowlen/luaqrcode/actions/workflows/test.yml)
+[![Lua 5.1+](https://img.shields.io/badge/Lua-5.1%2B-blue.svg)](https://www.lua.org/)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-orange.svg)](https://opensource.org/licenses/BSD-3-Clause)
+
 Pure Lua library for generating QR codes with native image output support.
 
 ## Features
