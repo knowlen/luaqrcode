@@ -57,6 +57,7 @@ Desktop.ini
 *.o
 *.a
 *.so
+*.luac
 luac.out
 
 # AI tools and configuration files
