@@ -54,9 +54,9 @@ framework.suite("Generator Polynomial")
     :test("generator polynomial adjustment", function()
         local tab = qrcode.get_generator_polynominal_adjusted(13, 25)
         assert.equal(tab[1], 0, "First coefficient")
-        assert.equal(tab[24], 74, "24th coefficient") 
+        assert.equal(tab[24], 74, "24th coefficient")
         assert.equal(tab[25], 0, "25th coefficient")
-        
+
         tab = qrcode.get_generator_polynominal_adjusted(13, 24)
         assert.equal(tab[1], 0, "First coefficient (24 length)")
         assert.equal(tab[23], 74, "23rd coefficient (24 length)")
@@ -93,7 +93,7 @@ framework.suite("Version and Error Correction")
 --- Test string encoding functions
 framework.suite("String Encoding")
     :test("numeric string encoding", function()
-        assert.equal(qrcode.encode_string_numeric("01234567"), 
+        assert.equal(qrcode.encode_string_numeric("01234567"),
                     "000000110001010110011000011", "Numeric encoding")
     end)
     :test("alphanumeric string encoding", function()
@@ -149,10 +149,10 @@ framework.suite("Codeword Arrangement")
         -- "HALLO WELT" in alphanumeric, code 5-H
         local data = {32,83,7,120,209,114,215,60,224,236,17,236,17,236,17,236, 17,236, 17,236, 17,236, 17, 236, 17,236, 17,236, 17,236, 17,236, 17,236, 17, 236, 17,236, 17,236, 17,236, 17,236, 17,236}
         local message_expected = {32, 236, 17, 17, 83, 17, 236, 236, 7, 236, 17, 17, 120, 17, 236, 236, 209, 236, 17, 17, 114, 17, 236, 236, 215, 236, 17, 17, 60, 17, 236, 236, 224, 236, 17, 17, 236, 17, 236, 236, 17, 236, 17, 17, 236, 236, 3, 171, 23, 23, 67, 165, 115, 115, 244, 230, 68, 68, 57, 109, 245, 245, 183, 241, 125, 125, 14, 45, 66, 66, 171, 198, 203, 203, 101, 125, 235, 235, 213, 213, 85, 85, 52, 84, 88, 88, 148, 88, 174, 174, 3, 187, 178, 178, 144, 89, 229, 229, 148, 61, 181, 181, 6, 220, 118, 118, 155, 255, 148, 148, 3, 150, 44, 44, 252, 75, 175, 175, 228, 113, 213, 213, 100, 77, 243, 243, 11, 147, 27, 27, 56, 164, 215, 215}
-        
+
         local tmp = qrcode.arrange_codewords_and_calculate_ec(5, 4, data)
         local message = qrcode.convert_bitstring_to_bytes(tmp)
-        
+
         for i = 1, #message_expected do
             assert.equal(message[i], message_expected[i], "Arranged codeword " .. i)
         end
@@ -163,12 +163,12 @@ framework.suite("Integration Tests")
     :test("complete QR code generation", function()
         local test_string = "HELLO WORLD"
         local ok, matrix = qrcode.qrcode(test_string)
-        
+
         assert.is_true(ok, "QR generation should succeed")
         assert.type_of(matrix, "table", "Result should be a matrix")
         assert.not_nil(matrix[1], "Matrix should have rows")
         assert.not_nil(matrix[1][1], "Matrix should have data")
-        
+
         -- Check matrix is square
         local size = #matrix
         assert.is_true(size > 0, "Matrix should have positive size")
@@ -189,10 +189,11 @@ framework.suite("Integration Tests")
             "https://example.com",
             "日本"  -- UTF-8 characters
         }
-        
+
         for _, test_case in ipairs(test_cases) do
             local ok, result = qrcode.qrcode(test_case)
             assert.is_true(ok, "QR generation should succeed for: " .. test_case)
             assert.type_of(result, "table", "Result should be matrix for: " .. test_case)
         end
     end)
+

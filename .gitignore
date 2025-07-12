@@ -62,6 +62,7 @@ luac.out
 # AI tools and configuration files
 CLAUDE.md
 CLAUDE.local.md
+.claude/
 .cursor/
 .cursorrules
 .github/copilot-instructions.md
