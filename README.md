@@ -80,11 +80,10 @@ end
 | File | Purpose |
 |------|---------|
 | `qrencode.lua` | Core QR code generation library |
-| `qrimage.lua` | Image output functionality (NEW) |
+| `qrimage.lua` | Image output functionality |
 | `qrcode.lua` | Text/ASCII display utilities |
 | `qrtest.lua` | Test suite for core library |
 | `test_qrimage.lua` | Tests for image generation |
-| `matrix_to_image.py` | Python integration pipeline |
 
 ## Testing
 
@@ -121,9 +120,9 @@ This is a fork of the original [luaqrcode](https://github.com/speedata/luaqrcode
 - Contributors to speedata/luaqrcode - Bug fixes and improvements
 
 **This Fork Adds:**
-- Native image output functionality
+- Native image output functionality (PPM/PNG/JPEG)
 - Command-line interface for image generation
-- Enhanced Python integration tools
+- Pure Lua implementation with no Python dependencies
 - Comprehensive test suite for image generation
 
 ## License
