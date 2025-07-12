@@ -1,1 +1,77 @@
-docs
+# Generated documentation
+docs/
+
+# Image files (test outputs and examples)
+*.png
+*.jpg
+*.jpeg
+*.ppm
+*.gif
+*.bmp
+
+# Test artifacts
+test_*.png
+test_*.ppm
+test_*.jpg
+qr_*.png
+qr_*.ppm
+*_test.*
+
+# Temporary files
+*.tmp
+*.temp
+temp_*
+*.tmp.*
+
+# Data files (often test data)
+*.csv
+*.txt
+*.log
+
+# Python artifacts (if any remain)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Editor artifacts
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS artifacts
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Lua artifacts
+*.o
+*.a
+*.so
+*.luac
+luac.out
+
+# AI tools and configuration files
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+.cursor/
+.cursorrules
+.github/copilot-instructions.md
+.aider*
+.codeium/
+.gemini/
+.anthropic/
+claude-*
+anthropic-*
+openai-*
+*.aider.log

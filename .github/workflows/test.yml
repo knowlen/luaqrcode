@@ -22,4 +22,4 @@ jobs:
           luaVersion: ${{ matrix.luaVersion }}
       - name: Test
         run: |
-          lua qrtest.lua
+          lua tests/run_all.lua
