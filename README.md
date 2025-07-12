@@ -110,6 +110,18 @@ lua -e '_G.test_framework = dofile("tests/framework.lua"); dofile("tests/test_co
 lua -e '_G.test_framework = dofile("tests/framework.lua"); dofile("tests/test_image.lua"); _G.test_framework.run()'
 ```
 
+### Performance Testing
+```bash
+# Performance benchmarks
+make benchmark      # Compare test suite performance
+make speed-test     # Compare QR generation speed
+make test-jit       # Run tests with LuaJIT
+
+# Bytecode compilation
+make bytecode       # Compile to bytecode for faster loading
+make clean          # Remove compiled files
+```
+
 ### Legacy Tests (Reference Only)
 ```bash
 # Original core tests (moved to legacy folder)
@@ -126,6 +138,21 @@ lua -e 'dofile("tests/legacy/test_qrimage.lua")'
 - **Rich assertion library** with clear error messages
 - **100% test coverage** for both core and image functionality
 - **CI-ready** with proper exit codes
+
+## Performance
+
+This library supports multiple Lua implementations with significant performance differences:
+
+| Implementation | Test Suite | QR Generation (100 codes) | Improvement |
+|---------------|------------|---------------------------|-------------|
+| **Standard Lua** | 0.35s | 1.08s | Baseline |
+| **LuaJIT** | 0.14s | 0.16s | **6.6x faster** |
+| **Bytecode** | ~0.35s | ~1.08s | Faster loading only |
+
+### Performance Recommendations
+- **Development**: Use standard Lua for maximum compatibility
+- **Production**: Use LuaJIT for 6.6x performance improvement
+- **Distribution**: Compile to bytecode for faster loading
 
 ## Supported Output Formats
 
